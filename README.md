@@ -1,8 +1,14 @@
-# docker-openssh-client
+# docker-ssh-rsync
 
-Docker image based on alpine linux with installed openssh client.
+This docker image based on alpine linux with installed openssh client and rsync.
 
-Strict host key checking is disabled.
-Agent forwarding is enabled.
+This is image is quite useful on the CI to deploy. 
+I personally use it with blog static generator like [Hugo](https://gohugo.io/) and [Pelican](https://blog.getpelican.com/)
 
-You can use environment variable `SSH_DEPLOY_KEY` for your private key. It will create ssh agent with your ssh key.
+### Details
+The ssh is configured in the docker using the optional env variable `SSH_DEPLOY_KEY` as private key. Check the file `bin/entrypoint.sh` for the details.
+
+Also the ssh client is configured with the following options:
+
+- Strict host key checking is disabled.
+- Agent forwarding is enabled.
